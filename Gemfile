@@ -10,7 +10,7 @@ gem "webauthn", "~> 2.4.0"
 
 gem 'bootsnap', '~> 1.16', require: false
 gem 'pg', '~> 1.4'
-# gem 'psych', '~> 3.3'
+gem 'psych', '~> 3.3'
 gem 'puma', '~> 4.2'
 gem "rollbar", "~> 2.16"
 gem 'sassc-rails', '~> 2.0'
