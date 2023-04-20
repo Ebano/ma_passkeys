@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WebAuthn Rails Demo App</title>
+    <title>Easy Auth</title>
     <meta name="description" content="Application demonstrating a WebAuthn password-less login built with Ruby on Rails + webauthn ruby gem">
 
     <%= csrf_meta_tags %>
@@ -38,7 +38,7 @@
     <header class="mdc-top-app-bar">
       <div class="mdc-top-app-bar__row">
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-          <span class="mdc-top-app-bar__title">WebAuthn Rails Demo App</span>
+          <span class="mdc-top-app-bar__title">Easy Auth</span>
         </section>
 
         <% if current_user %>
@@ -82,6 +82,7 @@
         Built by
       </span>
       <%= link_to "Cedarcode", "https://cedarcode.com", class: "mdc-theme--text-primary-on-light" %>
+      <span>with features from Sonja</span>
     </footer>
 
     <div class="mdc-snackbar js-messenger">
