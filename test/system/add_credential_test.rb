@@ -18,7 +18,7 @@ class AddCredentialTest < ApplicationSystemTestCase
     fill_in "Security Key nickname", with: "USB key"
 
     WebAuthn::PublicKeyCredential::CreationOptions.stub_any_instance :raw_challenge, fixed_challenge do
-      click_on "Register using WebAuthn"
+      click_on "Sign up using Passkeys"
       # wait for async response
       assert_button 'account_circle'
     end
