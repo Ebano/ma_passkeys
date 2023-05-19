@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'start/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resource :session, only: [:new, :create, :destroy] do
     post :callback
@@ -14,7 +15,13 @@ Rails.application.routes.draw do
     post :callback, on: :collection
   end
 
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
+  }
+
+
   # post "session_callback", to: "sessions#callback"
   # post "registration_callback", to: "registrations#callback"
-  root to: "home#index"
+  root to: "start#index"
 end
