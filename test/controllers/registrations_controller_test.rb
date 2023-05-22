@@ -5,25 +5,25 @@ require "webauthn/fake_client"
 
 class RegistrationsControllerTest < ActionDispatch::IntegrationTest
   test "should initiate registration successfully" do
-    post registration_url, params: { registration: { username: "alice" }, format: :json }
+    post registration_url, params: { registration: { email: "alice" }, format: :json }
 
     assert_response :success
   end
 
-  test "should return error if registrating taken username" do
-    User.create!(username: "alice")
+  test "should return error if registrating taken email" do
+    User.create!(email: "alice")
 
-    post registration_url, params: { registration: { username: "alice" }, format: :json }
+    post registration_url, params: { registration: { email: "alice" }, format: :json }
 
     assert_response :unprocessable_entity
-    assert_equal ["Username has already been taken"], JSON.parse(response.body)["errors"]
+    assert_equal ["Email has already been taken"], JSON.parse(response.body)["errors"]
   end
 
-  test "should return error if registrating blank username" do
-    post registration_url, params: { registration: { username: "" }, format: :json }
+  test "should return error if registrating blank email" do
+    post registration_url, params: { registration: { email: "" }, format: :json }
 
     assert_response :unprocessable_entity
-    assert_equal ["Username can't be blank"], JSON.parse(response.body)["errors"]
+    assert_equal ["Email can't be blank"], JSON.parse(response.body)["errors"]
   end
 
   test "should return error if registering existing credential" do
@@ -31,7 +31,7 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
     challenge = WebAuthn.configuration.encoder.encode(raw_challenge)
 
     WebAuthn::PublicKeyCredential::CreationOptions.stub_any_instance(:raw_challenge, raw_challenge) do
-      post registration_url, params: { registration: { username: "alice" }, format: :json }
+      post registration_url, params: { registration: { email: "alice" }, format: :json }
 
       assert_response :success
     end
@@ -44,7 +44,7 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
     webauthn_credential = WebAuthn::Credential.from_create(public_key_credential)
 
     User.create!(
-      username: "bob",
+      email: "bob",
       credentials: [
         Credential.new(
           external_id: Base64.strict_encode64(webauthn_credential.raw_id),

@@ -14,7 +14,7 @@ class SignInTest < ApplicationSystemTestCase
     fake_credentials = fake_client.create(challenge: fixed_challenge, user_verified: true)
     stub_create(fake_credentials)
 
-    fill_in "registration_username", with: "User1"
+    fill_in "registration_email", with: "User1"
     fill_in "Security Key nickname", with: "USB key"
 
     WebAuthn::PublicKeyCredential::CreationOptions.stub_any_instance :raw_challenge, fixed_challenge do
@@ -30,7 +30,7 @@ class SignInTest < ApplicationSystemTestCase
     fake_assertion = fake_client.get(challenge: fixed_challenge, user_verified: true)
     stub_get(fake_assertion)
 
-    fill_in "Username", with: "User1"
+    fill_in "Email", with: "User1"
 
     WebAuthn::PublicKeyCredential::RequestOptions.stub_any_instance :raw_challenge, fixed_challenge do
       click_button "Sign in using WebAuthn"
