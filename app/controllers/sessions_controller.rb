@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(username: session_params[:username])
+    user = User.find_by(email: session_params[:email])
 
     if user
       get_options = WebAuthn::Credential.options_for_get(
@@ -13,14 +13,14 @@ class SessionsController < ApplicationController
         user_verification: "required"
       )
 
-      session[:current_authentication] = { challenge: get_options.challenge, username: session_params[:username] }
+      session[:current_authentication] = { challenge: get_options.challenge, email: session_params[:email] }
 
       respond_to do |format|
         format.json { render json: get_options }
       end
     else
       respond_to do |format|
-        format.json { render json: { errors: ["Username doesn't exist"] }, status: :unprocessable_entity }
+        format.json { render json: { errors: ["Email doesn't exist"] }, status: :unprocessable_entity }
       end
     end
   end
@@ -28,9 +28,9 @@ class SessionsController < ApplicationController
   def callback
     webauthn_credential = WebAuthn::Credential.from_get(params)
 
-    user = User.find_by(username: session["current_authentication"]["username"])
+    user = User.find_by(email: session["current_authentication"]["email"])
 
-    raise "user #{session["current_authentication"]["username"]} never initiated sign up" unless user
+    raise "user #{session["current_authentication"]["email"]} never initiated sign up" unless user
 
     credential = user.credentials.find_by(external_id: Base64.strict_encode64(webauthn_credential.raw_id))
 
@@ -62,6 +62,6 @@ class SessionsController < ApplicationController
   private
 
   def session_params
-    params.require(:session).permit(:username)
+    params.require(:session).permit(:email)
   end
 end

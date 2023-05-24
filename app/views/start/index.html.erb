@@ -1,0 +1,15 @@
+
+<h1>Welcome to Easy Auth</h1>
+
+<%= render partial: 'application/feature_detection' %>
+
+<p>How do you want to register?</p>
+
+<section>
+	<p>modern (recommended)</p>
+	<%= link_to "with Passkeys", new_registration_path, class: "btn btn-primary" %>
+</section>
+<section>
+	<p>classic</p>
+	<%= link_to "with Password", new_user_registration_path, class: "btn btn-primary" %>
+</section>

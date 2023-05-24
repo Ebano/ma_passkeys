@@ -1,5 +1,7 @@
 <div class="mdc-list-group">
   <h3 class="mdc-list-group__subheader">Your Security Keys</h3>
+  <% if current_user.present? %>
+
   <ul class="mdc-list mdc-list--two-line">
     <% current_user.credentials.each do |credential| %>
       <li class="mdc-list-item">
@@ -36,4 +38,6 @@
       </div>
     <% end %>
   </div>
+  <% end %>
+
 </div>

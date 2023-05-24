@@ -5,11 +5,11 @@ class RegistrationsController < ApplicationController
   end
 
   def create
-    user = User.new(username: params[:registration][:username])
+    user = User.new(email: params[:registration][:email])
 
     create_options = WebAuthn::Credential.options_for_create(
       user: {
-        name: params[:registration][:username],
+        name: params[:registration][:email],
         id: user.webauthn_id
       },
       authenticator_selection: { user_verification: "required" }

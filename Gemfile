@@ -9,6 +9,7 @@ gem 'rails', "~> 6.0.6"
 gem "webauthn", "~> 2.4.0"
 
 gem 'bootsnap', '~> 1.16', require: false
+gem "devise", "~> 4.9", ">= 4.9.2"
 gem 'pg', '~> 1.4'
 gem 'psych', '~> 3.3'
 gem 'puma', '~> 4.2'

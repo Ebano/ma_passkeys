@@ -38,7 +38,7 @@
     <header class="mdc-top-app-bar">
       <div class="mdc-top-app-bar__row">
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-          <span class="mdc-top-app-bar__title">Easy Auth</span>
+          <%= link_to "Easy Auth", root_path, class: "mdc-top-app-bar__title" %>
         </section>
 
         <% if current_user %>
@@ -51,7 +51,7 @@
                 <div class="mdc-list">
                   <div class="mdc-list-item">
                     <span class="mdc-list-item__text">
-                      <%= current_user.username %>
+                      <%= current_user.email %>
                     </span>
                   </div>
 
@@ -73,6 +73,8 @@
 
     <div class="content mdc-top-app-bar--fixed-adjust">
       <div class="page-content">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
         <%= yield %>
       </div>
     </div>
@@ -82,7 +84,7 @@
         Built by
       </span>
       <%= link_to "Cedarcode", "https://cedarcode.com", class: "mdc-theme--text-primary-on-light" %>
-      <span>with features from Sonja</span>
+      <span>with password features added by Sonja</span>
     </footer>
 
     <div class="mdc-snackbar js-messenger">
