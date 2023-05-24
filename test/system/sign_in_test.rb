@@ -33,7 +33,7 @@ class SignInTest < ApplicationSystemTestCase
     fill_in "Email", with: "User1"
 
     WebAuthn::PublicKeyCredential::RequestOptions.stub_any_instance :raw_challenge, fixed_challenge do
-      click_button "Sign in using WebAuthn"
+      click_button "Sign in using Passkeys"
       # wait for async response
       assert_button "account_circle"
     end
