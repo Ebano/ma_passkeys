@@ -1,6 +1,9 @@
 <%= render partial: "application/github_ribbon" %>
 <%= render partial: 'application/feature_detection' %>
 
+<%= flash[:alert] %>
+<%= flash[:notice] %>
+
 <div class="mdc-card app-card">
   <div class="mdc-card__primary-action mdc-ripple-upgraded mdc-ripple-upgraded--foreground-activation" tabindex="0">
     <div class="app-card__primary"><h2 class="app-card__title mdc-typography--headline6">Sign in</h2>
@@ -18,9 +21,7 @@
               </div>
             </div>
 
-            <div class="center">
               <%= form.submit "Sign in using Passkeys", class: "mdc-button mdc-button--raised" %>
-            </div>
         <% end %>
       </div>
     </div>

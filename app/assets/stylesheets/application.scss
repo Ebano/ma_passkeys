@@ -30,6 +30,7 @@ $mdc-theme-background: #e1e2e1;
 @import "@material/theme/mdc-theme";
 @import "@material/top-app-bar/mdc-top-app-bar";
 @import "@material/typography/mdc-typography";
+@import "start.scss";
 
 html, body {
   height: 100%;
@@ -91,4 +92,8 @@ a {
   top: 0;
   right: 0;
   z-index: 4;
+}
+
+.title-specific {
+  color: var(--color-primary);
 }

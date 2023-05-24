@@ -3,13 +3,29 @@
 
 <%= render partial: 'application/feature_detection' %>
 
-<p>How do you want to register?</p>
+<h2 class="headline-small">How do you want to register?</h2>
 
-<section>
-	<p>modern (recommended)</p>
-	<%= link_to "with Passkeys", new_registration_path, class: "btn btn-primary" %>
-</section>
-<section>
-	<p>classic</p>
-	<%= link_to "with Password", new_user_registration_path, class: "btn btn-primary" %>
-</section>
+<details class="info-wrapper">
+	<summary class="summary">Modern with Passkeys (recommended)</summary>
+	<p>We offer a passwordless experience with the new Passkeys. Your browser and your OS support Passkeys, yay 🎉
+		So you choose this experience and let your device and your browser do the dirty work or learn more
+		about the new technology and its strong security aspects.</p>
+	<%= link_to "Sign up with Passkeys", new_registration_path, class: "mdc-button mdc-button--raised" %>
+</details>
+<details class="info-wrapper">
+	<summary class="summary">Classic with Password</summary>
+	<p>You love passwords, you use a good password manager, you choose the hardest
+		passphrases and passwords and you never reuse a password? Then this option is for you.
+		You can go on now and optionally register a second factor in the next steps which we strongly
+		recommend or learn more about passwords and security.</p>
+	<%= link_to "Sign up with Password", new_user_registration_path, class: "mdc-button mdc-button--raised" %>
+</details>
+
+<div class="info-footer">
+    <p>Already have an account?</p>
+    <%= link_to "Sign in with passkey", new_session_path, class: "mdc-button mdc-button--raised" %>
+    <span>or</span>
+    <%= link_to "Sign in with password", new_user_session_path, class: "mdc-button mdc-button--raised" %>
+
+</div>
+
