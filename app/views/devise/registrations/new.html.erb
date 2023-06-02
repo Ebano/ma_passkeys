@@ -1,31 +1,47 @@
+<%= flash[:alert] %>
+<%= flash[:notice] %>
 
 <div class="mdc-card app-card">
   <div class="mdc-card__primary-action mdc-ripple-upgraded mdc-ripple-upgraded--foreground-activation" tabindex="0">
     <div class="app-card__primary"><h2 class="app-card__title mdc-typography--headline6">Sign up with Password</h2>
       <div class="app-card__secondary mdc-typography--body2">
 
-<%= form_for(resource, as: resource_name, url: user_registration_path) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <%= flash[:alert] %>
-  <%= flash[:notice] %>
+        <%= form_for(resource, as: resource_name, url: user_registration_path) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <div class="form-field">
+                <div class="mdc-text-field mdc-text-field--fullwidth" data-controller="textfield" data-target="new-registration.usernameField">
+                    <%= f.email_field :email, class: "mdc-text-field__input", placeholder: "Email", required: true, autocapitalize: "none", "aria-controls" => "username-helper-text",  autocomplete: "email" %>
+                </div>
+            </div>
+
+            <div class="form-field">
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br />
+                <div class="mdc-text-field mdc-text-field--fullwidth" data-controller="textfield" data-target="new-registration.passwordField">
+                    <%= f.password_field :password, class: "mdc-text-field__input", placeholder: "Password", required: true, autocapitalize: "none", "aria-controls" => "password-helper-text", autocomplete: "new-password" %>
+                </div>
+            </div>
+
+
+            <div class="actions">
+                <%= f.submit "Sign up",  class: "mdc-button mdc-button--raised" %>
+            </div>
+            <div class="info-link">
+                <%= link_to 'Or try a passwordless experience with Passkeys', new_registration_path %>
+            </div>
+
+        <% end %>
+        </div>
+    </div>
+    <div class="mdc-card__actions">
+      <div class="mdc-card__action-buttons">
+        <div class="mdc-card__actions">
+          <%= link_to 'Sign in with password', new_user_session_path, class: "mdc-button mdc-card__action mdc-card__action--button mdc-ripple-upgraded" %>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>

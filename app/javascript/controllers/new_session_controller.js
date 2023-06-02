@@ -4,6 +4,7 @@ import * as Credential from "credential";
 import { MDCTextField } from '@material/textfield';
 
 export default class extends Controller {
+
   static targets = ["usernameField"]
 
   create(event) {
