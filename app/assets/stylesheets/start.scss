@@ -33,3 +33,28 @@
 .info-link {
   margin-top: 1rem;
 }
+
+#more {
+  display: none;
+}
+
+#check {
+  display: none;
+}
+
+#check:checked~.more-content {
+  display: block;
+}
+
+#check:checked~label {
+  display: none;
+}
+
+div>label {
+  margin-bottom: 1rem;
+}
+
+.more-content {
+  display: none;
+}
+

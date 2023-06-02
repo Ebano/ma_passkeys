@@ -1,4 +1,3 @@
-
 <h1>Welcome to Easy Auth</h1>
 
 <%= render partial: 'application/feature_detection' %>
@@ -10,16 +9,84 @@
 	<p>We offer a passwordless experience with the new Passkeys. Your browser and your OS support Passkeys, yay 🎉
 		So you choose this experience and let your device and your browser do the dirty work or learn more
 		about the new technology and its strong security aspects.</p>
+        <p id="showMore"></p>
+        <span id="more">
+        <p>What are Passkeys?</p>
+        <p>They are unique keys, which are produced in interaction with browser, OS, device
+            and you, who offers a biometric sign like a fingerprint or a face ID. They build on the WebAuthn API
+            which also allows authenticating with Hardware Security Token (like a Yubikey).
+            One of the new features is that you can use your passkey(s) under certain circumstances across multiple devices which
+            offers you a smooth login experience and the possibility of a backup in case you lose any of your devices.
+            Since Passkeys are relatively new, not all Operating Systems and browsers have adapted it yet – but it’s the mission of
+            the FIDO Alliance and the W3C to push passwordless authentication further.
+            <a href="https://fidoalliance.org/passkeys/">Read more here</a>
+        </p>
+
+        <p>Passkeys and Security</p>
+        <p>Passkeys base on public key encryption. Your private key is only saved to your iCloud keychain, only
+        your public key is shared with the Web Application you wish to log on. Since all the participants
+        are functioning only together, it’s not possible for a malicious website to "phish" the actual credentials from you.
+        Also, credential stuffing is impossible because of the uniqueness of your key pair.
+        Since the private key can be stored in the cloud, there is the vague possibility of a hack so that for
+        high security applications it is better to work with a good hardware security token and leave the private key on the device only.
+        </p>
+    </span>
+
+    <button onclick="toggleText()" id="textButton" class="mdc-button mdc-button--raised">
+        Show More
+    </button>
+
 	<%= link_to "Sign up with Passkeys", new_registration_path, class: "mdc-button mdc-button--raised" %>
 </details>
 <details class="info-wrapper">
+    <input id="check" type="checkbox">
 	<summary class="summary">Classic with Password</summary>
-	<p>You love passwords, you use a good password manager, you choose the hardest
+	    <p>You love passwords, you use a good password manager, you choose the hardest
 		passphrases and passwords and you never reuse a password? Then this option is for you.
 		You can go on now and optionally register a second factor in the next steps which we strongly
 		recommend or learn more about passwords and security.</p>
+        <div class="more-content">
+            <p>Passwords and Security</p>
+
+            <p>Passwords have a long history in the course of web authentication.
+                And the history of password’s problems is almost as long as that. Used wisely,
+                a password can offer good protection against attacks but it requires a user
+                aware of the dangers like phishing and credential stuffing. In order to prevent
+                the latter, many web apps offer a second factor authentication. We encourage
+                you to activate that and choose a minimal annoying strategy with RBA.
+                <a href="https://riskbasedauthentication.org/">Read more here</a>. (promise it won’t annoy you too much – we only ask
+                for it the first time you use it on your browsers and in case of suspicious activities)
+            </p>
+            <label for="check" class="mdc-button mdc-button--raised">Show less</label>
+        </div>
+<label for="check" class="mdc-button mdc-button--raised">Show more</label>
 	<%= link_to "Sign up with Password", new_user_registration_path, class: "mdc-button mdc-button--raised" %>
 </details>
+
+    <script>
+    function toggleText() {
+        var compactText =
+            document.getElementById("showMore") || document.getElementById("showMore2");
+
+        var moreText =
+            document.getElementById("more") || document.getElementById("more2") ;
+
+        var buttonText =
+            document.getElementById("textButton") || document.getElementById("textButton2");
+
+        if (compactText.style.display === "none") {
+
+            moreText.style.display = "none";
+            compactText.style.display = "inline";
+            buttonText.innerHTML = "Show More";
+        }
+        else {
+            moreText.style.display = "inline";
+            compactText.style.display = "none";
+            buttonText.innerHTML = "Show Less";
+        }
+    }
+</script>
 
 <div class="info-footer">
     <p>Already have an account?</p>
