@@ -1,7 +1,7 @@
 # Easy Auth
 ### An inclusive and usable Implementation Demo App with Passkey and Password Registration Option
 
-## New Features on top the original app
+## New Features on top of the original app
 - Overview page which presents two possibilities: Sign up with **passkeys** and with **password**.
 There you are shown more information on both authentication techniques.
 - In case there is no platform authenticator, the user is redirected to the password sign up directly
