@@ -30,6 +30,8 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Roboto:300,400,500" %>
     <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
+    <%= favicon_link_tag image_url('passkeys-logo.webp') %>
+
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -84,7 +86,7 @@
         Built by
       </span>
       <%= link_to "Cedarcode", "https://cedarcode.com", class: "mdc-theme--text-primary-on-light" %>
-      <span>with password features added by Sonja</span>
+      <span>with authentication features added by Sonja Scheungrab</span>
     </footer>
 
     <div class="mdc-snackbar js-messenger">

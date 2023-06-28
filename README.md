@@ -1,4 +1,15 @@
-# WebAuthn Rails Demo App
+# Easy Auth
+### An inclusive and usable Implementation Demo App with Passkey and Password Registration Option
+
+## New Features on top the original app
+- Overview page which presents two possibilities: Sign up with **passkeys** and with **password**.
+There you are shown more information on both authentication techniques.
+- In case there is no platform authenticator, the user is redirected to the password sign up directly
+- With available platform authenticator, a user is able to register passkeys in addition to a password.
+
+
+---
+## Original WebAuthn Rails Demo App
 
 Application demonstrating a [WebAuthn](https://en.wikipedia.org/wiki/WebAuthn) password-less login built with Ruby on Rails + [webauthn](https://github.com/cedarcode/webauthn-ruby) ruby gem.
 

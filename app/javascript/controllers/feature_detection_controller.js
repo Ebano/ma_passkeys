@@ -6,19 +6,20 @@ export default class extends Controller {
 
   connect() {
 
-    if (window.PublicKeyCredential &&
-      PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable &&
-      PublicKeyCredential.isConditionalMediationAvailable) {
-        console.log("Conditional UI available")
-      }
-
     if (!WebAuthnSupported()) {
       this.messageTarget.innerHTML = "This browser doesn't support WebAuthn API";
       this.element.classList.remove("hidden");
     } else {
       PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable().then((available) => {
-        if (!available) {
-          window.location.href = "http://localhost:3000/users/sign_up"; // redirect to password sign up page
+        if (!available)  {
+          if (document.querySelector("h1").innerHTML === "Welcome to Easy Auth") {
+            window.location.href = "http://localhost:3000/users/sign_up"; // redirect to password sign up page
+          } else {
+            console.log("platform auth not available.")
+            let div = document.createElement("div");
+            div.innerHTML = "You currently can't register passkeys because there is no platform authenticator."
+            document.getElementById("feat").appendChild(div);
+          }
         }
       });
     }

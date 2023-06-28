@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 :root {
-	--color-primary: lightseagreen;
+	--color-primary: #44DEAD;
 	--color-secondary: lightcoral;
 	--base-font-size: 1rem;
 	--font-weight-bold: 700;
@@ -38,19 +38,21 @@
   display: none;
 }
 
-#check {
+#check, #check2 {
   display: none;
 }
 
-#check:checked~.more-content {
+#check:checked~.more-content,
+#check2:checked~.more-content {
   display: block;
 }
 
-#check:checked~label {
+#check:checked~label,
+#check2:checked~label {
   display: none;
 }
 
-div>label {
+div > label {
   margin-bottom: 1rem;
 }
 
@@ -58,3 +60,12 @@ div>label {
   display: none;
 }
 
+div.info-footer > a {
+  margin-bottom: 0.5rem;
+}
+
+details.info-wrapper > button,
+details.info-wrapper > a,
+details.info-wrapper > label {
+  margin-bottom: 0.5rem;
+}
