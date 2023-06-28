@@ -1,7 +1,10 @@
-<div class="mdc-list-group">
-  <h3 class="mdc-list-group__subheader">Your Passkeys</h3>
-  <% if current_user.present? %>
 
+<div class="mdc-list-group">
+  <h3 id="feat" class="mdc-list-group__subheader">Your Passkeys</h3>
+  <%= render partial: 'application/feature_detection' %>
+
+  <% if current_user.present? %>
+  <h1></h1>
   <ul class="mdc-list mdc-list--two-line">
     <% current_user.credentials.each do |credential| %>
       <li class="mdc-list-item">
