@@ -7,6 +7,36 @@ There you are shown more information on both authentication techniques.
 - In case there is no platform authenticator, the user is redirected to the password sign up directly
 - With available platform authenticator, a user is able to register passkeys in addition to a password.
 
+### Run it locally
+
+#### Prerequisites
+
+* Ruby
+* yarn (or npm)
+* PostgreSQL
+
+#### Setup
+
+```
+$ git clone https://github.com/Ebano/ma_passkeys
+$ cd ma_passkeys/
+$ cp .env.example .env
+$ bundle install
+$ yarn install (or npm install)
+$ bundle exec rake db:setup
+```
+
+#### Running
+
+```
+$ bundle exec rails s
+```
+
+The page is available under http://localhost:3000.
+
+
+
+
 
 ---
 ## Original WebAuthn Rails Demo App
